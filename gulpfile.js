@@ -25,6 +25,7 @@ var autoprefixer = require('gulp-autoprefixer');
 // npm install browser-sync gulp --save-dev
 var browserSync = require('browser-sync').create();
 // npm install gulp-eslint
+// ./node_modules/.bin/eslint --init
 var eslint = require('gulp-eslint');
 // npm install gulp-concat
 var concat = require('gulp-concat');
@@ -36,9 +37,9 @@ gulp.task('default', function(done) {
     gulp.watch('js/**/*.js', gulp.series('lint'));
     gulp.watch('js/**/*.js', gulp.series('scripts'));
     gulp.watch('./index.html', gulp.series('copy-html'));
-    gulp.watch(['itsDone/index.html', 'itsDone/css/style.css']).on('change', browserSync.reload);
+    gulp.watch(['itsDone/index.html', 'itsDone/js/main.js', 'itsDone/css/style.css']).on('change', browserSync.reload);
     browserSync.init({
-        server: './'
+        server: 'itsDone'
     });
     done();
 });
@@ -80,7 +81,7 @@ gulp.task('copy-html', function(done) {
 });
 
 gulp.task('copy-images', function(done) {
-    gulp.src('./img/*')
+    gulp.src('img/*')
         .pipe((gulp.dest('itsDone/img')));
     done();
 });
@@ -93,10 +94,22 @@ gulp.task('scripts', function(done) {
 });
 
 gulp.task('imDone', function(done) {
+    gulp.src('./index.html')
+        .pipe((gulp.dest('itsDone')));
+    gulp.src('sass/**/*.scss')
+        .pipe(sass({
+            outputStyle: 'compressed'
+        }).on('error', sass.logError))
+        .pipe(autoprefixer({
+            browsers: ['last 2 versions']
+        }))
+        .pipe(gulp.dest('itsDone/css'));
     gulp.src('js/**/*.js')
         .pipe(concat('main.js'))
         .pipe(uglify())
         .pipe(gulp.dest('itsDone/js'));
+    gulp.src('img/*')
+        .pipe((gulp.dest('itsDone/img')));
     
     done();
 });
