@@ -26,6 +26,7 @@ var autoprefixer = require('gulp-autoprefixer');
 var browserSync = require('browser-sync').create();
 // npm install gulp-eslint
 // ./node_modules/.bin/eslint --init
+// add to top of js file: /*eslint-env jquery*/
 var eslint = require('gulp-eslint');
 // npm install gulp-concat
 var concat = require('gulp-concat');

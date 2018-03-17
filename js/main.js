@@ -1,1 +1,3 @@
-$('#headerSection').append(new Date().getFullYear());
+/*eslint-env jquery*/
+
+$('footer').html(new Date().getFullYear());
