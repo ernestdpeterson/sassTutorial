@@ -8,7 +8,7 @@ body {
 $base: #3acdc2;
 $base-dark: darken($base, 25%);
 $base-light: lighten($base, 25%);
-$complementary: complement($base);
+$base-complimentary: complement($base);
 
 header {
     background-color: $base;
@@ -23,7 +23,7 @@ header {
 }
 
 section {
-    background-color: $complementary;
+    background-color: $base-complimentary;
 }
 
 @mixin centered {
