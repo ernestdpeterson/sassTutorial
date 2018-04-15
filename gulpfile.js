@@ -1,3 +1,5 @@
+// yum install nodejs npm
+
 // Gulp 4 uses an updated CLI which needs to be updated globally. This CLI is backwards compatible with any Gulp 3.X projects you may have locally.
 
 // # first uninstall gulp globally
@@ -8,6 +10,7 @@
 
 // # install the latest Gulp 4 CLI tools globally
 // npm install gulpjs/gulp-cli -g
+
 // Once done you can run npm install again from the edition-node-gulp repository and everything should be pulled down via npm
 
 // You can confirm the right versions are installed using
