@@ -1,3 +1,4 @@
+// yum install epel-release.noarch
 // yum install nodejs npm
 
 // Gulp 4 uses an updated CLI which needs to be updated globally. This CLI is backwards compatible with any Gulp 3.X projects you may have locally.
